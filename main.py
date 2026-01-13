@@ -21,7 +21,7 @@ EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_FROM = os.getenv("EMAIL_FROM")
 IMAGE_BASE_PATH = os.path.join(os.getcwd(), "static", "ticket_images")
-IMAGE_BASE_URL = os.getenv("IMAGE_BASE_URL", "http://localhost:8000/static/ticket_images")  
+IMAGE_BASE_URL = os.getenv("IMAGE_BASE_URL")  
 BASE_DIR = os.getcwd()
 IMAGE_BASE_PATH = os.path.join(BASE_DIR, "static", "ticket_images")
 razorpay_client = razorpay.Client(
@@ -1188,4 +1188,5 @@ def verify_payment(
 
 @app.get("/addTicketEnquiry")
 def get_ticket_enquiry():
+
     return {"message": "Ticket enquiry API is working"} 
