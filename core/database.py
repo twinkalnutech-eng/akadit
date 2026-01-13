@@ -1,28 +1,13 @@
-# core/database.py
+import pyodbc
 import os
+from dotenv import load_dotenv
 
-ENV = os.getenv("APP_ENV", "local").lower()
+load_dotenv()
 
 def get_connection():
-    if ENV == "production":
-        # ===== Render / Linux =====
-        import pymssql
-        return pymssql.connect(
-            server=os.getenv("DB_SERVER"),
-            user=os.getenv("DB_USERNAME"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_DATABASE"),
-            port=int(os.getenv("DB_PORT", 1433))
-        )
-    else:
-        # ===== Local Windows =====
-        import pyodbc
-        return pyodbc.connect(
-            f"DRIVER={{{os.getenv('DB_DRIVER')}}};"
-            f"SERVER={os.getenv('DB_SERVER')};"
-            f"DATABASE={os.getenv('DB_DATABASE')};"
-            f"UID={os.getenv('DB_USERNAME')};"
-            f"PWD={os.getenv('DB_PASSWORD')};"
-            "TrustServerCertificate=yes;"
-        )
-
+    return pyodbc.connect(
+        f"SERVER={os.getenv('DB_SERVER')};"
+        f"DATABASE={os.getenv('DB_DATABASE')};"
+        f"UID={os.getenv('DB_USERNAME')};"
+        f"PWD={os.getenv('DB_PASSWORD')}"
+    )
