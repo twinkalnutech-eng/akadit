@@ -9,8 +9,7 @@ from utils.utils import encrypt_qr_data
 load_dotenv()
 
 QR_PATH = os.getenv("TICKET_QR_CODE_PATH", "./qrs") 
-PDF_PATH = os.getenv("TICKET_PDF_PATH")
-
+PDF_PATH = os.getenv("PDF_PATH", "./pdfs") 
 os.makedirs(QR_PATH, exist_ok=True)
 os.makedirs(PDF_PATH, exist_ok=True)
 
@@ -135,3 +134,4 @@ def create_ticket_pdf(
 
 
     return pdf_file
+
