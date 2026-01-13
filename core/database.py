@@ -1,13 +1,14 @@
-import pymssql
+import pyodbc
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_connection():
-    return pymssql.connect(
-        server=os.getenv("DB_SERVER"),
-        user=os.getenv("DB_USERNAME"),
-        password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_DATABASE"),
-        port=int(os.getenv("DB_PORT", 1433)),
-        timeout=10,
-        login_timeout=10
+    return pyodbc.connect(
+        f"DRIVER={{{os.getenv('DB_DRIVER')}}};"
+        f"SERVER={os.getenv('DB_SERVER')};"
+        f"DATABASE={os.getenv('DB_DATABASE')};"
+        f"UID={os.getenv('DB_USERNAME')};"
+        f"PWD={os.getenv('DB_PASSWORD')}"
     )
