@@ -12,9 +12,7 @@ def get_connection():
             user=os.getenv("DB_USERNAME"),
             password=os.getenv("DB_PASSWORD"),
             database=os.getenv("DB_DATABASE"),
-            port=int(os.getenv("DB_PORT", 1433)),
-            timeout=10,
-            login_timeout=10
+            port=int(os.getenv("DB_PORT", 1433))
         )
     else:
         # ===== Local Windows =====
@@ -27,3 +25,4 @@ def get_connection():
             f"PWD={os.getenv('DB_PASSWORD')};"
             "TrustServerCertificate=yes;"
         )
+
