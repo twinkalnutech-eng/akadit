@@ -7,4 +7,5 @@ cryptography
 pycryptodome
 twilio
 email-validator
+reportlab
 razorpay
