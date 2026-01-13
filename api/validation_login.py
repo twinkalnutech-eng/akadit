@@ -36,7 +36,6 @@ def validate_user_credentials_in_db(username: str, password: str) -> bool:
 
 def get_connection():
     return pyodbc.connect(
-        f"DRIVER={{{os.getenv('DB_DRIVER')}}};"
         f"SERVER={os.getenv('DB_SERVER')};"
         f"DATABASE={os.getenv('DB_DATABASE')};"
         f"UID={os.getenv('DB_USERNAME')};"
@@ -179,4 +178,5 @@ def validate_user_and_get_tickets(
         if cursor:
             cursor.close()
         if conn:
+
             conn.close()
