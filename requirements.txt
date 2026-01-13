@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pyodbc
+python-dotenv
+qrcode
+cryptography
+pycryptodome
+twilio
+email-validator
+razorpay
